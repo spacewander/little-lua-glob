@@ -28,6 +28,7 @@ function _M.compile(pat)
     local exp = {}
     exp.pattern = pat
     exp.parts = split(pat, GLOB)
+    exp.n_part = #exp.parts
     exp.leading_glob = pat:byte(1) == GLOB_BYTE
     exp.trailing_glob = pat:byte(#pat) == GLOB_BYTE
     return setmetatable(exp, {__index = _E})
@@ -53,12 +54,12 @@ function _E.match(self, subj)
         return true
     end
 
-    if self.pattern == "" or #self.parts == 1 then
+    if self.pattern == "" or self.n_part == 1 then
         return subj == self.pattern
     end
 
     local start = 1
-    for i = 1, #self.parts - 1 do
+    for i = 1, self.n_part - 1 do
         local part = self.parts[i]
         local from, to = subj:find(part, start, true)
         if i == 1 then
@@ -77,7 +78,7 @@ function _E.match(self, subj)
     end
 
     return self.trailing_glob or
-        has_suffix(subj, start, self.parts[#self.parts])
+        has_suffix(subj, start, self.parts[self.n_part])
 end
 
 return _M
