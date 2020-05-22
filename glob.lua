@@ -1,3 +1,5 @@
+-- Copyright (C) by Zexuan Luo (spacewander), under MIT License
+
 -- Ported from https://github.com/ryanuber/go-glob
 local _M = {}
 local _E = {}
