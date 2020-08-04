@@ -33,7 +33,7 @@ function _M.compile(pat)
     exp.n_part = #exp.parts
     exp.leading_glob = pat:byte(1) == GLOB_BYTE
     exp.trailing_glob = pat:byte(#pat) == GLOB_BYTE
-    return setmetatable(exp, {__index = _E})
+    return setmetatable(exp, mt)
 end
 
 local function has_suffix(s, offset, suffix)
