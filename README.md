@@ -3,8 +3,8 @@
 A little implementation of glob in Lua.
 
 This library is ported from https://github.com/ryanuber/go-glob.
-Unlike other implementations which support all kinds of wildcard, this library only supports '*'.
-However, supporting '*' is enough for most of cases while keeping the implementation simple.
+Unlike other implementations which support all kinds of wildcard, this library only supports '\*'.
+However, supporting '\*' is enough for most of cases while keeping the implementation simple.
 
 Compared with other implementations, this library has several advantages:
 * simple: you can put the single Lua file in your project directly.
