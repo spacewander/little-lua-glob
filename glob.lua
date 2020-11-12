@@ -9,21 +9,21 @@ local GLOB_BYTE = string.byte(GLOB, 1)
 
 -- http://lua-users.org/wiki/SplitJoin
 local function split(s, sep)
-   local res = {}
+    local res = {}
 
-   if #s > 0 then
-      local n, start = 1, 1
-      local first,last = s:find(sep, start, true)
-      while first do
-         res[n] = s:sub(start, first-1)
-         n = n+1
-         start = last+1
-         first,last = s:find(sep, start, true)
-      end
-      res[n] = s:sub(start)
-   end
+    if #s > 0 then
+        local n, start = 1, 1
+        local first, last = s:find(sep, start, true)
+        while first do
+            res[n] = s:sub(start, first - 1)
+            n = n + 1
+            start = last + 1
+            first, last = s:find(sep, start, true)
+        end
+        res[n] = s:sub(start)
+    end
 
-   return res
+    return res
 end
 
 function _M.compile(pat)
